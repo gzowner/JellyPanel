@@ -1,0 +1,22 @@
+GalaxyTV Jellyfin v1.0.0 Stable
+================================
+
+Ubuntu Server 24.04 LTS:
+
+  sudo apt-get update
+  sudo apt-get install -y unzip
+  unzip galaxytv-jellyfin-v1.0.0.zip
+  cd galaxytv-jellyfin-v1.0.0
+  sudo bash install.sh
+
+Choose:
+  1) Fresh installation
+
+After installation:
+  sudo /opt/galaxytv-jellyfin/scripts/manage.sh health
+  sudo cat /opt/galaxytv-jellyfin/panel-admin-credentials.txt
+
+Upgrade an existing GalaxyTV installation:
+  sudo bash install.sh --mode upgrade
+
+See README.md for repair, restore, diagnostics, uninstall, GPU, and non-interactive options.
