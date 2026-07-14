@@ -178,3 +178,27 @@ Community and educational media libraries.
 Managed Jellyfin hosting.
 Reseller-based customer management.
 Operators distributing media they own or are authorized to distribute.
+
+GalaxyTV Jellyfin Management Suite v1.0 is now available.
+
+Turn a regular Jellyfin server into a complete managed media platform with:
+
+✅ User expiration and renewals
+✅ Subscription packages and connection limits
+✅ Reseller and credit management
+✅ Multiple M3U and XMLTV sources
+✅ Automatic EPG mapping
+✅ Movies and TV-show STRM libraries
+✅ TMDB metadata, NFO files, posters, and backdrops
+✅ Real-time playback monitoring
+✅ Session messages and playback controls
+✅ Account-abuse warnings
+✅ Automatic backups and restore
+✅ Server health and rclone monitoring
+✅ One-click redacted diagnostics
+✅ Guided Ubuntu 24.04 installation
+✅ Fresh install, upgrade, repair, and rollback modes
+
+One ZIP. One installer. One management panel.
+
+No media or television services are included. You supply your own authorized content and sources.
