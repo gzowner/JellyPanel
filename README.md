@@ -1,3 +1,5 @@
+<img width="2154" height="749" alt="Screenshot from 2026-07-16 15-15-15" src="https://github.com/user-attachments/assets/05a30ba1-2b6e-4cb8-8533-0b128ecf8920" />
+<img width="2154" height="749" alt="Screenshot from 2026-07-16 15-17-01" src="https://github.com/user-attachments/assets/5a8f57b4-d945-4367-99c1-4eaa8e05ec6c" />
 # JellyPanel
 Jellyfin Panel with more features
 GalaxyTV Jellyfin Management Suite v1.0
