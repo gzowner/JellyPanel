@@ -1,0 +1,49 @@
+name: Export JellyPanel Source for Emby
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  export:
+    if: github.event.issue.title == 'Export JellyPanel Source for Emby'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Report start
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: gh issue comment "$ISSUE_NUMBER" --body "JellyPanel source export started: $RUN_URL"
+
+      - name: Checkout JellyPanel
+        uses: actions/checkout@v4
+
+      - name: Package source snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p export
+          rsync -a --exclude='.git/' --exclude='.github/workflows/export-source-for-emby.yml' ./ export/JellyPanel/
+          tar -C export -czf JellyPanel-source-for-Emby.tar.gz JellyPanel
+
+      - name: Upload source snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: JellyPanel-source-for-Emby
+          path: JellyPanel-source-for-Emby.tar.gz
+          retention-days: 1
+
+      - name: Report completion
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh issue comment "$ISSUE_NUMBER" --body "JellyPanel source export completed. Download **JellyPanel-source-for-Emby** from: $RUN_URL"
+          gh issue close "$ISSUE_NUMBER" --reason completed
