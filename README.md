@@ -1,206 +1,261 @@
-<img width="2154" height="749" alt="Screenshot from 2026-07-16 15-15-15" src="https://github.com/user-attachments/assets/05a30ba1-2b6e-4cb8-8533-0b128ecf8920" />
-<img width="2154" height="749" alt="Screenshot from 2026-07-16 15-17-01" src="https://github.com/user-attachments/assets/5a8f57b4-d945-4367-99c1-4eaa8e05ec6c" />
-# JellyPanel
-Jellyfin Panel with more features
-GalaxyTV Jellyfin Management Suite v1.0
+<div align="center">
 
-A complete self-hosted media-server management platform built around Jellyfin.
+# GalaxyTV JellyPanel
 
-GalaxyTV turns a standard Jellyfin installation into a managed service with user accounts, subscription packages, resellers, Live TV, EPG automation, cloud-media libraries, stream monitoring, backups, and server operations—all controlled from one clean web panel.
+### Jellyfin Management Suite v1.3.0
 
-Main Features
-Easy Server Installation
-One ZIP package.
-Guided installation on Ubuntu 24.04.
-Automatic Docker and Docker Compose setup.
-Fresh install, upgrade, repair, restore, diagnostics, and uninstall modes.
-Configurable panel, Jellyfin, and internal service ports.
-Configurable media paths, timezone, and rclone settings.
-Automatic pre-upgrade backup and rollback protection.
-Designed to coexist with Emby, Plex, and other services using custom ports.
-Jellyfin User Management
-Create, edit, enable, disable, and remove Jellyfin users.
-Account expiration dates.
-Automatic account suspension when expired.
-Re-enable renewed accounts.
-Disable downloads for customer accounts.
-Prevent customers from changing restricted account settings.
-Assign subscription packages to users.
-Configure connection limits by package.
-Keep administrative accounts protected from reseller actions.
-Subscription Packages
+[![Version](https://img.shields.io/badge/version-1.3.0-6d5dfc)](./galaxytv-jellyfin-v1.3.0.zip)
+![Platform](https://img.shields.io/badge/platform-Ubuntu%2024.04-E95420)
+![Jellyfin](https://img.shields.io/badge/server-Jellyfin-00A4DC)
+![Deployment](https://img.shields.io/badge/deployment-Docker%20%7C%20Native-2496ED)
+![Database](https://img.shields.io/badge/schema-17-336791)
 
-Create custom plans such as:
+**One panel for Jellyfin users, packages, resellers, Live TV, EPG, distributed libraries, stream monitoring, backups, and server operations.**
 
-1 Connection – 30 Days
-2 Connections – 90 Days
-4 Connections – 1 Year
-Movies Only
-Live TV Only
-Premium Full Access
+[Download v1.3.0](./galaxytv-jellyfin-v1.3.0.zip) · [What’s new](#whats-new-in-v130) · [Installation](#installation) · [Remote Library Nodes](#remote-library-nodes)
 
-Each package can control:
+</div>
 
-Expiration length.
-Simultaneous connection limit.
-Live TV access.
-Movie access.
-TV-show access.
-Download permissions.
-Package price or reseller credit cost.
-Reseller System
-Administrator, master-reseller, and reseller roles.
-Reseller credit balances.
-Credit transaction history.
-Resellers can create and renew customers.
-Resellers only see their own customers.
-Master resellers can manage child resellers.
-Package-based credit deductions.
-Protected administrator settings.
-Full reseller activity records.
-Live TV and M3U Management
-Add multiple M3U playlists.
-Enable or disable individual sources.
-Filter channels by category.
-Build customer-specific filtered playlists.
-Preserve channel names, logos, groups, and tvg-id information.
-Detect EPG URLs embedded in M3U headers.
-Manually assign one or more XMLTV feeds.
-Test playlists and guide feeds before applying them.
-Refresh Jellyfin Live TV directly from GalaxyTV.
-Automatic EPG Mapper
-Exact tvg-id matching.
-Channel-name matching.
-Channel-number matching.
-Normalized matching that removes unnecessary HD, FHD, country, and punctuation tags.
-Confidence scoring.
-Ambiguous-match protection.
-Manual channel-to-EPG mapping.
-Permanent saved overrides.
-Duplicate XMLTV ID detection.
-Multiple EPG feeds with priority order.
-Preview all mappings before applying changes.
-Repair missing tvg-id values without modifying the original provider playlist.
-Movies and TV-Show Library Mirror
+## Screenshots
 
-GalaxyTV can build a lightweight local Jellyfin library from media stored on rclone, Google Drive, network storage, or other mounted storage.
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img src="https://github.com/user-attachments/assets/05a30ba1-2b6e-4cb8-8533-0b128ecf8920" alt="GalaxyTV JellyPanel dashboard" />
+      <br /><strong>Dashboard and system overview</strong>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://github.com/user-attachments/assets/5a8f57b4-d945-4367-99c1-4eaa8e05ec6c" alt="GalaxyTV JellyPanel management interface" />
+      <br /><strong>Management workspace</strong>
+    </td>
+  </tr>
+</table>
 
-Walks both movie and TV-show folders.
-Supports standard movie title and year naming.
-Detects common TV naming formats such as S01E01 and 1x01.
-TMDB movie, show, season, and episode metadata.
-Generates local STRM files.
-Generates Jellyfin-compatible NFO metadata.
-Downloads posters and backdrop images.
-Preserves TMDB and IMDb IDs when available.
-Incremental updates process only changed files.
-Missing files can be removed automatically.
-Local metadata scanning reduces unnecessary cloud-drive access.
-Stable internal playback links continue working even when library names change.
-Stream Operations
+## Overview
 
-See what customers are watching in real time:
+GalaxyTV JellyPanel turns a standard Jellyfin installation into a managed media platform. It combines customer and reseller management with Live TV tools, XMLTV/EPG automation, distributed STRM libraries, real-time playback monitoring, health checks, backups, diagnostics, and controlled server operations.
 
-Username and reseller.
-Remote IP address.
-Device and application.
-Movie, episode, or Live TV channel.
-Playback progress.
-Paused or playing status.
-Direct Play, Direct Stream, or Transcoding.
-Video and audio codecs.
-Resolution and bitrate.
-Current connection usage.
-Package connection allowance.
+The suite is designed for operators managing media they own or are authorized to distribute. No media, television service, provider credentials, or copyrighted content is included.
 
-Available administrator controls:
+## What’s new in v1.3.0
 
-Send an on-screen message.
-Stop an individual playback session.
-Suspend a user.
-Re-enable a suspended user.
-Review and resolve warnings.
-Optionally stop excess sessions automatically.
-Abuse and Connection Monitoring
-Detect users exceeding package limits.
-Detect several IP addresses using one account.
-Detect repeated session reconnects.
-Record session history.
-Separate warnings from automatic enforcement.
-Configurable monitoring thresholds.
-Resellers only see warnings belonging to their customers.
-Automatic enforcement is optional and disabled by default.
-Operations Center
+Version 1.3.0 adds remote Library Node deployment directly from **Server Libraries → Install Node**.
 
-Monitor the entire installation from one page:
+- Install or update a Library Node over SSH from JellyPanel.
+- Choose Docker Compose or native Python/systemd deployment.
+- Optionally install Docker Engine when it is missing.
+- Authenticate with an SSH password or OpenSSH private key.
+- Support root, passwordless sudo, or sudo-password elevation.
+- Optional strict SSH host-key verification.
+- Generate unique Agent and Media tokens for every node.
+- Save node URLs, tokens, source paths, output paths, and readiness automatically.
+- Review live deployment progress and the final installation log.
+- Preserve existing STRM files, SQLite inventory, state, and missing-file history during updates.
+- Keep SSH passwords, private keys, passphrases, and sudo passwords out of PostgreSQL.
+- Retain manual Docker and native installers for offline or restricted environments.
+- Database schema upgraded to **17**.
 
-Jellyfin service health.
-PostgreSQL health.
-Redis health.
-GalaxyTV API and worker health.
-M3U and media-gateway health.
-Rclone mount responsiveness.
-Media-drive and system-drive free space.
-Last media inventory scan.
-Last library-mirror build.
-M3U and XMLTV errors.
-Active Jellyfin sessions.
-Failed metadata items.
-Controlled service restart options.
-Backup and Recovery
-Manual backups.
-Automatic nightly backups.
-Daily and weekly retention policies.
-PostgreSQL database backup.
-Jellyfin configuration and database backup.
-GalaxyTV users, packages, resellers, credits, and settings.
-M3U, XMLTV, and EPG mappings.
-Optional STRM and NFO mirror backup.
-Checksum verification before restoration.
-Restore from the GalaxyTV panel.
-Automatic backup before upgrades.
-Installation rollback when validation fails.
-Diagnostics and Support
-One-click diagnostic ZIP.
-Sensitive passwords and API keys are automatically redacted.
-Container status and health information.
-Recent service logs.
-Mount and disk information.
-Database migration information.
-M3U, EPG, mirror, and session status.
-Simple support package users can send for troubleshooting.
-Designed For
+## Feature matrix
 
-GalaxyTV is suitable for:
+| Area | Included capabilities |
+|---|---|
+| **Installation and lifecycle** | Guided Ubuntu 24.04 installation, Docker setup, configurable ports and paths, fresh install, upgrade, repair, restore, diagnostics, uninstall, pre-upgrade backup, validation, and rollback. |
+| **Jellyfin users** | Create, edit, renew, suspend, re-enable, reset passwords, remove users, enforce expiration dates, disable downloads, protect administrator accounts, and apply package policies. |
+| **Packages** | Duration, simultaneous connection limits, movies, TV shows, Live TV, downloads, reseller credit cost, and retail price. |
+| **Resellers** | Administrator, master-reseller, and reseller roles; customer ownership; child resellers; credit balances; transaction history; and activity records. |
+| **Multiple servers** | Register and test multiple Jellyfin servers, assign users and libraries, review server health, and manage remote Library Nodes. |
+| **M3U and Live TV** | Multiple playlists, source enable/disable, category filters, customer-specific playlists, logo/group/tvg-id preservation, source testing, and Jellyfin refresh controls. |
+| **XMLTV and EPG** | Multiple feeds, priorities, embedded URL detection, exact and normalized matching, channel-number matching, confidence scoring, duplicate detection, manual overrides, and preview before applying. |
+| **Library mirror** | Movies and TV episodes, TMDB metadata, STRM files, Jellyfin-compatible NFO files, posters, backdrops, stable playback links, incremental updates, and missing-file grace periods. |
+| **Remote Library Nodes** | Panel-driven SSH deployment, Docker or native mode, per-node tokens, live logs, update preservation, existing-library adoption, verification, and scheduled synchronization. |
+| **Stream Operations** | Active user, reseller, IP, device, client, title/channel, progress, paused state, Direct Play/Direct Stream/transcoding, codecs, resolution, bitrate, and connection usage. |
+| **Playback controls** | Send an on-screen message, stop an individual session, suspend or re-enable a user, and optionally enforce excess-session limits. |
+| **Abuse monitoring** | Connection-limit warnings, multiple-IP detection, reconnect patterns, session history, reseller-scoped warnings, and optional automatic enforcement. |
+| **Operations Center** | Jellyfin, PostgreSQL, Redis, API, workers, gateways, rclone, disk space, active sessions, inventory, mirror jobs, metadata failures, and controlled restarts. |
+| **Backup and recovery** | Manual and nightly backups, daily/weekly retention, PostgreSQL, Jellyfin configuration, panel data, M3U/XMLTV, EPG mappings, optional mirror data, checksums, restore, and rollback. |
+| **Diagnostics** | One-click redacted support ZIP with container health, logs, mount information, disks, migrations, M3U/EPG status, mirror jobs, and session status. |
 
-Personal media-server owners.
-Private organizations.
-Hotels and hospitality systems.
-Community and educational media libraries.
-Managed Jellyfin hosting.
-Reseller-based customer management.
-Operators distributing media they own or are authorized to distribute.
+## Architecture
 
-GalaxyTV Jellyfin Management Suite v1.0 is now available.
+```mermaid
+flowchart LR
+    A[Administrator / Reseller] --> P[JellyPanel Web UI]
+    P --> API[GalaxyTV API]
+    API --> DB[(PostgreSQL)]
+    API --> R[(Redis)]
+    API --> J1[Jellyfin Server]
+    API --> M3U[M3U / XMLTV Gateway]
+    API --> OPS[Operations Agent]
+    API --> N1[Remote Library Node]
+    API --> N2[Remote Library Node]
+    N1 --> S1[Media Storage]
+    N2 --> S2[Media Storage]
+    N1 --> J1
+    N2 --> J2[Jellyfin Server]
+```
 
-Turn a regular Jellyfin server into a complete managed media platform with:
+## Installation
 
-✅ User expiration and renewals
-✅ Subscription packages and connection limits
-✅ Reseller and credit management
-✅ Multiple M3U and XMLTV sources
-✅ Automatic EPG mapping
-✅ Movies and TV-show STRM libraries
-✅ TMDB metadata, NFO files, posters, and backdrops
-✅ Real-time playback monitoring
-✅ Session messages and playback controls
-✅ Account-abuse warnings
-✅ Automatic backups and restore
-✅ Server health and rclone monitoring
-✅ One-click redacted diagnostics
-✅ Guided Ubuntu 24.04 installation
-✅ Fresh install, upgrade, repair, and rollback modes
+### Requirements
 
-One ZIP. One installer. One management panel.
+- Ubuntu 24.04 is the primary supported host operating system.
+- Root or sudo access.
+- Internet access during initial installation.
+- Sufficient storage for Jellyfin configuration, PostgreSQL, Redis, backups, logs, and generated library metadata.
+- Media mounts must be available before enabling automated library synchronization.
 
-No media or television services are included. You supply your own authorized content and sources.
+### Fresh installation
+
+Download and extract the current package:
+
+```bash
+cd /root
+unzip -o galaxytv-jellyfin-v1.3.0.zip
+cd galaxytv-jellyfin-v1.3.0
+sudo bash install.sh
+```
+
+The installer supports configurable panel, Jellyfin, and internal-service ports so JellyPanel can coexist with Emby, Plex, or another Jellyfin installation.
+
+### Upgrade from v1.2.0
+
+```bash
+cd /root
+unzip -o galaxytv-jellyfin-v1.3.0.zip
+cd galaxytv-jellyfin-v1.3.0
+sudo bash install.sh --mode upgrade
+```
+
+The upgrade preserves Jellyfin, PostgreSQL, Redis, users, servers, packages, resellers, credits, M3U/XMLTV sources, EPG mappings, backups, STRM files, and Library Agent inventory. A normal pre-upgrade backup is created, and application files roll back automatically when validation fails.
+
+After upgrading:
+
+```bash
+sudo /opt/galaxytv-jellyfin/scripts/manage.sh health
+sudo /opt/galaxytv-jellyfin/scripts/manage.sh deployments
+```
+
+Force-refresh the browser with `Ctrl+F5` after the upgrade.
+
+## Remote Library Nodes
+
+Remote nodes let one central JellyPanel manage STRM/NFO libraries generated close to the media storage.
+
+### Panel-driven installation
+
+1. Register and test the remote Jellyfin server under **Servers**.
+2. Open **Server Libraries → Install Node**.
+3. Enter the SSH host, port, username, and authentication method.
+4. Select Docker Compose or native Python/systemd deployment.
+5. Set the host media scan path and STRM output path.
+6. Set the Agent URL and Jellyfin URL reachable from the node.
+7. Review the live deployment log and confirm the node reports ready.
+
+The deployment request keeps temporary SSH credentials only in memory. Credentials are discarded when the job ends, and the remote temporary installation directory is removed after a successful deployment.
+
+### Docker node layout
+
+```text
+/opt/galaxytv-library-node/
+├── .env
+├── compose.yml
+├── library-agent/
+├── state/
+└── strm-library/
+```
+
+Recommended Jellyfin URL from a Docker node:
+
+```text
+http://host.docker.internal:8096
+```
+
+Mount the generated library into the remote Jellyfin container:
+
+```yaml
+volumes:
+  - /opt/galaxytv-library-node/strm-library:/strm-library:ro
+```
+
+Then add these Jellyfin libraries after the first successful synchronization:
+
+```text
+Movies:   /strm-library/Movies
+TV Shows: /strm-library/TV Shows
+```
+
+### Native node layout
+
+```text
+/etc/systemd/system/galaxytv-library-node.service
+/etc/galaxytv-library-node.env
+/opt/galaxytv-library-node/library-agent
+/opt/galaxytv-library-node/venv
+/opt/galaxytv-library-node/state
+```
+
+Recommended Jellyfin URL from a native node:
+
+```text
+http://127.0.0.1:8096
+```
+
+The service defaults to root to avoid media-mount permission failures. A restricted account can be used when it has read access to the media source and write access to the STRM output path.
+
+### Safe adoption workflow
+
+Remote installation does not automatically synchronize a full media library.
+
+1. Test the node.
+2. Review source and output paths.
+3. Use **Adopt Existing** when older STRM files already exist.
+4. Run **Verify**.
+5. Run a small test synchronization.
+6. Add the generated library paths to Jellyfin.
+7. Keep the previous direct-media library enabled until playback and metadata are confirmed.
+
+An unavailable or empty mount cannot trigger mass deletion. Missing generated items retain the configured grace period.
+
+## Management commands
+
+```bash
+sudo /opt/galaxytv-jellyfin/scripts/manage.sh health
+sudo /opt/galaxytv-jellyfin/scripts/manage.sh status
+sudo /opt/galaxytv-jellyfin/scripts/manage.sh servers
+sudo /opt/galaxytv-jellyfin/scripts/manage.sh libraries
+sudo /opt/galaxytv-jellyfin/scripts/manage.sh deployments
+sudo /opt/galaxytv-jellyfin/scripts/manage.sh logs
+```
+
+## Security design
+
+- Administrative Jellyfin accounts are protected from reseller actions.
+- Customer downloads are disabled by default unless a package permits them.
+- API keys and passwords are redacted from diagnostics.
+- SSH passwords, private keys, passphrases, and sudo passwords are not stored in PostgreSQL.
+- Each Library Node receives separate Agent and Media tokens.
+- Strict SSH host-key verification is available for production deployments.
+- Internal agent ports should be restricted with a firewall, private LAN, or WireGuard.
+- The plain HTTP Library Agent should not be exposed directly to the public internet.
+- Automatic excess-session enforcement is optional and disabled by default.
+
+## Current limitations
+
+- Automatic remote deployment currently targets apt-based Ubuntu and Debian hosts.
+- Remote deployment requires administrator-approved root or sudo access.
+- JellyPanel does not automatically modify a remote firewall.
+- JellyPanel does not automatically modify remote Jellyfin container volume mappings.
+- A deployment interrupted by a central API restart is marked failed because SSH credentials are intentionally not retained.
+- Test one server and a small media folder before enabling scheduled synchronization for a large library.
+
+## Intended use
+
+GalaxyTV JellyPanel is suitable for personal media servers, private organizations, hospitality systems, educational or community libraries, managed Jellyfin hosting, and reseller-based customer management.
+
+Use it only with content and sources you own or are authorized to distribute.
+
+<div align="center">
+
+### One ZIP. One installer. One management panel.
+
+</div>
